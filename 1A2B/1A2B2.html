@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>猜數字2 </title>
+    </head>
+    <body>
+	txt1:
+	<input type="text" id="txt1" name="txt1"  PlaceHolder="Keyin something" size="40">
+	<input type="button" id="Button1" name="Button1"   
+		value="執行亂數" onclick="ran()">
+	<br><br>
+	txt2:
+    <INPUT type="text" id="txt2"  name="txt2" value="Result" size="40">
+    <input type="button" id="Button1" name="Button1"   
+		value="輸入數字" onclick="ans(txt1.value)">
+    <br>
+     <script type="text/javascript">
+      //產生亂數
+         
+            function ran(){
+                do {var n=Math.floor(Math.random()*10000);
+                     n="00"+n;
+                   alert(n);
+                   var ran1=n.substr(-4,1);
+                  
+                    var ran2=n.substr(-3,1);
+                  
+                   var ran3=n.substr(-2,1);
+                   
+                   var ran4=n.substr(-1,1);
+                }
+                while(ran1==ran2||ran1==ran3||ran1==ran4||ran2==ran3||ran2==ran4||ran3==ran4);
+           
+                 n1=ran1+ran2+ran3+ran4;
+               
+              
+            txt1.value=n1;
+            }
+      function ans(a){
+          var b=a+2;
+          txt2.value=b;
+          
+      }
+    </script>
+    
+    </body>
+</html>

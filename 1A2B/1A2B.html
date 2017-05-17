@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>猜字遊戲1A2B</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/jquery.toast.css">
+    
+    </head>
+    <body>
+        
+        <h3 align="center">遊戲說明<br>請先按開始再請輸入四個不同的數字<br>程式會提示1A2B表示<bR>1個數字正確位置正確2個數字正確位置不對</h3>
+        <div class="container">
+        <!-- 製作輸入方塊及按鈕-->
+
+    <!--    <form class="form-horizontal">-->
+            <div class="form-group">
+                <label for="userNameTextBox"
+                       class="control-label col-sm-2">
+                    <span class="glyphicon glyphicon-user"></span>
+                    題目
+                </label>
+                <div class="col-sm-10">
+                    <input type="password"
+                           id="text2" name="ans"
+                           class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="passwordTextBox"
+                       class="control-label col-sm-2">
+                    <span class="glyphicon glyphicon-upload"></span>
+                    答案
+                </label>
+                <div class="col-sm-10">
+                    <input type="text"
+                           id="ansTextBox" name="ans"
+                           class="form-control"
+                           placeholder="請在此輸入答案">
+                </div>
+            </div>
+            <div align="center">
+                <label>提示</label>
+                <div id="ab">0A0B</div>
+            </div>
+           
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button onclick="ansText(text2.value)" name="loginOrCancel"
+                            id="inButton"
+                            class="btn btn-success">
+                        <span class="glyphicon glyphicon-upload"></span> 送出
+                    </button>
+                    <button onclick="ran()" name="loginOrCancel"
+                            id="cancelButton"
+                            class="btn btn-default">
+                        <span class="glyphicon glyphicon-play"></span> 開始
+                    </button>
+                </div>
+            </div>
+
+
+      <!--  </form> -->
+       
+    </div>
+     <script type="text/javascript">
+      //產生亂數
+            
+             function ran(){
+                do {var n=Math.floor(Math.random()*10000);
+                     n="00"+n;
+                   
+                   var ran1=n.substr(-4,1);
+                   var ran2=n.substr(-3,1);
+                   var ran3=n.substr(-2,1);
+                   var ran4=n.substr(-1,1);
+                }
+                while(ran1==ran2||ran1==ran3||ran1==ran4||ran2==ran3||ran2==ran4||ran3==ran4);
+                 n1=ran1+ran2+ran3+ran4;
+                  
+                text2.value=n1;
+            }
+        //比對輸入資料
+            function ansText(n1){
+                var list=document.getElementById('ab');
+                var list2=document.getElementById('ansTextBox');
+                
+                //取出各個位置值
+               var num=n1+"";
+               
+               var a=0;
+               var b=0;
+    
+              var num2 = num.substr(0, 1);
+              
+              var num3 = num.substr(1, 1);
+              var num4 = num.substr(2, 1);
+              var num5 = num.substr(3, 1);
+              
+              var s=ansTextBox.value;
+              
+              txt2 = s.substr(0, 1);
+              txt3 = s.substr(1, 1);
+              txt4 = s.substr(2, 1);
+              txt5 = s.substr(3, 1);
+  
+               if (num2==txt2){a+=1;}
+               if (num3==txt3){a+=1;}
+               if (num4==txt4){a+=1;}
+               if (num5==txt5){a+=1;}
+               if (num2==txt3){b+=1}
+               if (num2==txt4){b+=1}
+               if (num2==txt5){b+=1}
+               if (num3==txt2){b+=1}
+               if (num3==txt4){b+=1}
+               if (num3==txt5){b+=1}
+               if (num4==txt2){b+=1}
+               if (num4==txt3){b+=1}
+               if (num4==txt5){b+=1}
+               if (num5==txt2){b+=1}
+               if (num5==txt3){b+=1}
+               if (num5==txt4){b+=1}
+               if (a==4){alert("完全正確")}
+               var sum=a+"A"+b+"B";
+               
+                //ansTextBox.value = sum;
+                list.innerHTML=sum;
+               
+            } 
+                       
+        </script>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery.toast.js"></script>
+
+
+    </body>
+</html>
